@@ -2,6 +2,11 @@ theme = "maupassant"
 baseURL = "http://superchun.cn"
 languageCode = "zh-CN"
 title = "悉达多｜PainMaker"
+preserveTaxonomyNames = true
+disablePathToLower = true
+
+hasCJKLanguage = true
+summaryLength = 140
 
 [author]
   name = "悉达多"

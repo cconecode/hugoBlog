@@ -8,7 +8,7 @@ type: "about"
 
 
 
-<i class="fa fa-envelope"></i> Email：[@superxidaduo@gmail.com](mailto:18899851894@163.com)
+<i class="fa fa-envelope"></i> Email：[@xidaduo@superchun.cn](mailto:xidaduo@superchun.cn)
 
 
 

@@ -208,14 +208,6 @@ self.effect = [[GLKBaseEffect alloc] init];
 
 
 
-```
-
-```
-
-
-
-
-
 
 
 

@@ -2,7 +2,6 @@
  title: Cordova in iOS
  date: 2016/09/08
  tags: ["Cordova"]
- toc: true
  type: post
  permalink: Cordova
 ---

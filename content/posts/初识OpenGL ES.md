@@ -2,7 +2,6 @@
  title: 初识 OpenGL ES
  date: 2016/08/29
  tags: ["OpenGL ES"]
- toc: true
  permalink: OpenGLES-1
  type: post
 ---

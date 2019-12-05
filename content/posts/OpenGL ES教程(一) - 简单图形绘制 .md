@@ -2,7 +2,6 @@
  title: OpenGL实战(一) - 简单图形绘制
  date: 2016/08/31
  tags: ["OpenGL ES"]
- toc: true
  permalink: OpenGLES-2
  type: post
 ---
@@ -209,7 +208,9 @@ self.effect = [[GLKBaseEffect alloc] init];
 
 
 
+```
 
+```
 
 
 

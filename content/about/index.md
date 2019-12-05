@@ -1,7 +1,6 @@
 ---
 date: 2016-08-26 15:18:58
-comments: false
-type: "about"
+type: about
 ---
 
 <i class="fa fa-user"></i> Nickname: [@悉达多](http://superchun.cn)

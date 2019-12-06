@@ -11,7 +11,7 @@ type: post
 
 ### 1. 获取 github 及 github global 的 DNS
 
-用浏览器访问 https://www.ipaddress.com/，分别获取 github 和 github.global.ssl.fastly.net 对应的 IP：
+用浏览器访问 https://www.ipaddress.com，分别获取 github 和 github.global.ssl.fastly.net 对应的 IP：
 
 <img src="https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-06-093146.png" alt="image-20191206173139048" style="zoom:50%;" />
 

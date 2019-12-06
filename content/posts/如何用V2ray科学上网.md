@@ -247,21 +247,23 @@ systemctl restart nginx
 
 V2RayX 的配置界面长这样：
 
+![2019-11-29-074008](https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-06-092019.png)
+
 <img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074008.png" alt="image-20191129152702069" style="zoom:50%;" />
 
 下面对各个功能及配置进行详细说明：
 
-<img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074002.png" alt="image-20191129153014081" style="zoom:50%;" />
+![2019-11-29-074002](https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-06-092045.png)
 
 <img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-073955.png" alt="image-20191129153149501" style="zoom:50%;" />
 
-<img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-073949.png" alt="image-20191129153413732" style="zoom:50%;" />
+<img src="https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-06-092435.png" alt="2019-11-29-073949" style="zoom:50%;" />
 
 到这里基本配置就完成了，接下来配置 websocket 和 TLS，点击配置中的 `transport settings...`，进入到：
 
-<img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074227.png" alt="image-20191129154226871" style="zoom:50%;" />
+<img src="https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-06-092503.png" alt="2019-11-29-074227" style="zoom:50%;" />
 
-<img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074344.png" alt="image-20191129154343698" style="zoom:50%;" />
+<img src="https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-06-092621.png" alt="2019-11-29-074344" style="zoom:50%;" />
 
 到这里，客户端的配置也就已经完成了，可以愉快的科学上网了：)
 

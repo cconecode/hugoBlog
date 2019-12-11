@@ -10,8 +10,6 @@ type: post
 
 想要通过 V2Ray 科学上网，先得了解 V2Ray 是什么。根据 V2Ray 指南比较官方的描述：
 
-<!--more-->
-
 > V2Ray 是 Project V 下的一个工具。Project V 是一个包含一系列构建特定网络环境工具的项目，而 V2Ray 属于最核心的一个。 官方中介绍Project V 提供了单一的内核和多种界面操作方式。内核（V2Ray）用于实际的网络交互、路由等针对网络数据的处理，而外围的用户界面程序提供了方便直接的操作流程。
 
 简单点说，V2Ray 就是一个跟 Shadowsocks 差不多的代理软件，可以让我们科学上网。只不过相对来说，V2Ray 功能更强大一点，同时配置也更复杂一点。而且鉴于现在走 SS 协议的代理基本都会受到干扰，科学上网起来也没那么流畅，这时候就需要了解及配置一套自己的 V2Ray了。V2Ray 更加稳定，而且传输速度相对 SS 也更快一点。
@@ -247,15 +245,15 @@ systemctl restart nginx
 
 V2RayX 的配置界面长这样：
 
-![2019-11-29-074008](https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-06-092019.png)
+<img src="https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-06-092019.png" alt="2019-11-29-074008" style="zoom:50%;" />
 
-<img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074008.png" alt="image-20191129152702069" style="zoom:50%;" />
+<img src="https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-10-032252.png" alt="2019-11-29-074008" style="zoom:50%;" />
 
 下面对各个功能及配置进行详细说明：
 
-![2019-11-29-074002](https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-06-092045.png)
+<img src="https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-06-092045.png" alt="2019-11-29-074002" style="zoom:50%;" />
 
-<img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-073955.png" alt="image-20191129153149501" style="zoom:50%;" />
+<img src="https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-10-032346.png" alt="2019-11-29-073955" style="zoom:50%;" />
 
 <img src="https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-06-092435.png" alt="2019-11-29-073949" style="zoom:50%;" />
 

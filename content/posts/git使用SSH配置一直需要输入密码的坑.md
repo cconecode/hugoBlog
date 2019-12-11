@@ -8,8 +8,6 @@ type: post
 
 一般 git 提供了 HTTPS 和 SSH（Secure Shell） 两种认证方式。HTTPS 比较简单，只需要输入对应的 user 和 password 就可以了。SSH 则相对复杂一点，需要使用 ssh 命令生成 RSA 密钥对，将 public key 提交到服务器，本地保留 private key。SSH 还可以允许我们通过 config 来管理多用户，例如：一般我们会有一个自己的 github 账户，通过 SSH 管理；同时，公司可能会有一个另外的源码管理平台，如 gitlab 或 gitee 等，一些公司还会在 gitlab 上搭建自有服务器。*SSH 如何生成密钥对，如何通过 config 管理，这里就不做过多赘述了，网上随便一搜或者 github 中都有详细的说明：）*
 
-<!--more-->
-
 SSH 的 config 格式一般如下：
 
 ```shell
@@ -20,7 +18,7 @@ Identityfile # 私钥目录
 
 在前不久，~~上班摸鱼~~逛 v2ex 的时候，看见一个人发了一个帖子：
 
-<img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g9djh01xtcj316m0n6dli.jpg" alt="image-20191128102137393" style="zoom:50%;" />
+<img src="https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-10-031615.jpg" alt="image-20191128102137393" style="zoom:50%;" />
 
 在上家公司的时候，我也遇到了同样的问题。每次重启 iTerm2 或者电脑，再 pull 或者 push 代码，就提示要输入密码，无论输入什么密码都提示错误。我一度以为是我人品问题，后来一阵摸索~~瞎试~~之后，将 Host 改成 HostName 相同的，就可以解决了。也就是说，如果你公司源码管理平台的地址是 gitlab.xxx.xxx，只需要将 Host 和 HostName 一起改成这个，就可以了。
 

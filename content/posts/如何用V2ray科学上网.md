@@ -4,6 +4,7 @@ date: 2019-11-29 14:06:21
 tags: ["科学上网"]
 permalink: how-to-freedom
 type: post
+draft: true
 ---
 
 ## 什么是 V2Ray

@@ -911,4 +911,36 @@ colors[2] == Color.blue;
 * 不能继承、mix in 或实现枚举。
 * 无法显式实例化枚举。
 
-### 
+### 给类添加功能：mixins
+
+mixins 是一种在多个类层次结构中重用类代码的一种方式。
+
+使用 `with`  关键字，后面接一个或多个 mixin 名字来使用 mixin。下面是一个两个类使用 mixin 的例子：
+
+```dart
+class Musician extends Performer with Musical {
+  // ...
+}
+
+class Maestro extends Person with Musical, Aggressive, Demented {
+  // ...
+}
+```
+
+为了实现 mixin，创建一个 extend Object 的类并且声明为没有构造函数。除非想 mixin 成为一个 regular class，使用 `mixin` 关键字代替 `class`：
+
+```dart
+mixin Musical {
+  bool canPalyPiano = false;
+  bool canCompose = false;
+}
+```
+
+为了指定只有确定的类才能使用该 mixin，用  `on` 来制定要求的父类：
+
+```dart
+mixin MusicalPerformer on Musician {
+	// ...
+}
+```
+

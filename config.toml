@@ -42,7 +42,7 @@ googleAnalytics = "UA-153875253-1"
 # Utteranc 评论
 [params.utteranc]
   enable = true
-  repo = "cconecode/blogcomment"
+  repo = "superchun/blogcomment"
   issueTerm = "pathname"
   theme = "github-light"
 

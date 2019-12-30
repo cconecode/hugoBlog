@@ -944,3 +944,38 @@ mixin MusicalPerformer on Musician {
 }
 ```
 
+### 类变量和方法
+
+使用 `static` 关键字实现类范围的变量和方法。
+
+#### 静态变量
+
+静态变量对于类范围的状态和常量很有用：
+
+```dart
+class Queue {
+	static const initialCapacity = 16;
+}
+```
+
+静态变量直到使用的时候才被初始化。
+
+#### 静态方法
+
+静态方法不在一个实例上进行操作，因此也不能访问 `this`。
+
+```dart
+class Point {
+  num x, y;
+  Point(this.x, this.y);
+  
+  static num distanceBetween(Point a, Point b) {
+    var dx = a.x - b.x;
+    var dy = a.y - b.y;
+    return sqrt(dx * dx + dy * dy);
+  }
+}
+```
+
+## 泛型
+

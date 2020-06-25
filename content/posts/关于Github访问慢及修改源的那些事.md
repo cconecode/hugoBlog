@@ -1,6 +1,7 @@
 ---
 title: "关于Github访问慢及修改源的那些事"
 date: 2019-12-06T16:13:07+08:00
+slug: github-access-changesource
 tag: ["杂谈低语"]
 type: post
 ---

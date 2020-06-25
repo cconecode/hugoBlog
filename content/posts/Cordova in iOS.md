@@ -4,6 +4,7 @@
  tags: ["Cordova"]
  type: post
  permalink: Cordova
+ slug: cordova-inios
 ---
 
 Cordova 的前身是 PhoneGap，是一个 Hybrid 框架，可以让开发者使用HTML、Javascript、CSS开发跨平台的App。

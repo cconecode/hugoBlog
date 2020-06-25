@@ -2,6 +2,7 @@
 title: Mac快捷键
 date: 2019-11-08 14:26:02
 premalink: mac-shortcutkey
+slug: mac-shortcutkey
 tags: ["杂谈低语"]
 type: post
 ---

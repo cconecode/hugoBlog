@@ -3,6 +3,7 @@ title: 从Heapsort与Mergesort看排序算法
 date: 2019-12-03 10:28:26
 tags: ["数据结构", "算法"]
 permalink: fromHeapsortAndMergesortThinkSortAlgorithm
+slug: sort-algorithm-heapsort-mergesort
 type: post
 ---
 

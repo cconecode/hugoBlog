@@ -3,6 +3,7 @@
  date: 2016/08/31
  tags: ["OpenGL ES"]
  permalink: OpenGLES-2
+ slug: opngeles-2
  type: post
 ---
 

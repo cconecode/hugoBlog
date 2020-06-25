@@ -3,6 +3,8 @@ baseURL = "https://superchun.net"
 languageCode = "zh-CN"
 title = "悉达多｜PainMaker"
 
+enablePermalinks = true
+
 preserveTaxonomyNames = true
 disablePathToLower = true
 
@@ -56,3 +58,7 @@ googleAnalytics = "UA-153875253-1"
   enable = true
   options = ""
 
+# URL 结构
+[permalinks]
+  posts = "/post/:slug"
+ 

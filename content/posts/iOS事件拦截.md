@@ -3,6 +3,7 @@
  date: 2016/07/20
  tags: ["事件拦截"]
  permalink: iOSEvent
+ slug: iOS-event
  type: post
 ---
 

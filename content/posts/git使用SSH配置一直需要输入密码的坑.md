@@ -3,6 +3,7 @@ title: git使用SSH配置一直需要输入密码的坑
 date: 2019-11-28 10:07:07
 tags: ["git ssh"]
 premalink: git-ssh-config
+slug: git-ssh-config
 type: post
 ---
 

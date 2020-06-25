@@ -3,6 +3,7 @@ title: What's New in Xcode11
 date: 2019-11-05 15:38:21
 tags: ["iOS"]
 premalink: what's-new-in-xcode11
+slug: what's-new-in-xcode11
 typora-copy-images-to: ipic
 type: post
 ---

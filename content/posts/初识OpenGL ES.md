@@ -5,6 +5,7 @@
  permalink: OpenGLES-1
  slug: opengles-1
  type: post
+ summary: 在如今直播盛行，VR可能即将崛起的时代，OpenGL ES将会变得不可或缺。而OpenGL ES的学习曲线比较陡峭，所以写博文来记录学习过程。
 ---
 
 在如今直播盛行，VR可能即将崛起的时代，OpenGL ES将会变得不可或缺。而OpenGL ES的学习曲线比较陡峭，所以写博文来记录学习过程，同时也希望能够帮助到一起想学习OpenGL ES的同学。由于能力尚浅，文中错误之处敬请指出，谢谢！

@@ -3,13 +3,14 @@ baseURL = "https://superchun.net"
 languageCode = "zh-CN"
 title = "悉达多｜PainMaker"
 
+summaryLength = 80
+hasCJKLanguage = true
+
 enablePermalinks = true
 
 preserveTaxonomyNames = true
 disablePathToLower = true
 
-hasCJKLanguage = true
-summaryLength = 140 
 
 paginate = 8
 

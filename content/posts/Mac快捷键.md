@@ -5,6 +5,7 @@ premalink: mac-shortcutkey
 slug: mac-shortcutkey
 tags: ["杂谈低语"]
 type: post
+summary: Mac 内置了很多对于文本操作的快捷键组合，在 Apple 的[官方文档](https://support.apple.com/zh-cn/HT201236)里也给出了所有 Mac 操作的快捷键。熟悉这些快捷键可以让我们日常的使用和工作更有效率，双手不需要离开键盘去摸鼠标了。
 ---
 
 Mac 内置了很多对于文本操作的快捷键组合，在 Apple 的[官方文档](https://support.apple.com/zh-cn/HT201236)里也给出了所有 Mac 操作的快捷键。熟悉这些快捷键可以让我们日常的使用和工作更有效率，双手不需要离开键盘去摸鼠标了。因为本身是个程序员，所以罗列了一些比较重要的快捷键组合，大部分都是关于文本操作的。

@@ -5,6 +5,7 @@ tags: ["git ssh"]
 premalink: git-ssh-config
 slug: git-ssh-config
 type: post
+summary: 在逛 V2ex 的时候，看见有人遭遇了跟我之前一样的 git 使用 SSH 一直会要求输入密码的坑，所以便记录下来，希望能帮助到有需要的人。
 ---
 
 一般 git 提供了 HTTPS 和 SSH（Secure Shell） 两种认证方式。HTTPS 比较简单，只需要输入对应的 user 和 password 就可以了。SSH 则相对复杂一点，需要使用 ssh 命令生成 RSA 密钥对，将 public key 提交到服务器，本地保留 private key。SSH 还可以允许我们通过 config 来管理多用户，例如：一般我们会有一个自己的 github 账户，通过 SSH 管理；同时，公司可能会有一个另外的源码管理平台，如 gitlab 或 gitee 等，一些公司还会在 gitlab 上搭建自有服务器。*SSH 如何生成密钥对，如何通过 config 管理，这里就不做过多赘述了，网上随便一搜或者 github 中都有详细的说明：）*

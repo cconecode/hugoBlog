@@ -4,11 +4,10 @@ date: 2019-12-06T16:13:07+08:00
 slug: github-access-changesource
 tag: ["杂谈低语"]
 type: post
+summary: 由于一些特殊原因，国内访问 Github 一般会比较慢，可以通过修改 DNS 来提高访问速度。
 ---
 
-## Github 访问慢
-
-由于一些特殊原因，国内访问 Github 一般会比较慢，可以通过修改 DNS 来提高访问速速
+由于一些特殊原因，国内访问 Github 一般会比较慢，可以通过修改 DNS 来提高访问速度
 
 ### 1. 获取 github 及 github global 的 DNS
 

@@ -6,9 +6,8 @@ premalink: what's-new-in-xcode11
 slug: what's-new-in-xcode11
 typora-copy-images-to: ipic
 type: post
+summary: WWDC 2019 已经过去快半年多了，Xcode 11 更新也有段时间了。用了一段时间之后，发现 Xcode 11 较之 Xcode 10 还是有许多地方不一样的，于是便看了 [WWDC 2019 Session 401](https://developer.apple.com/videos/play/wwdc2019/401/)，顺便做一下记录。
 ---
-
-# WWDC19 - What's New in Xcode11
 
 WWDC 2019 已经过去快半年多了，Xcode 11 更新也有段时间了。用了一段时间之后，发现 Xcode 11 较之 Xcode 10 还是有许多地方不一样的，于是便看了 [WWDC 2019 Session 401](https://developer.apple.com/videos/play/wwdc2019/401/)，顺便做一下记录。
 

@@ -5,6 +5,7 @@ tags: ["数据结构", "算法"]
 permalink: fromHeapsortAndMergesortThinkSortAlgorithm
 slug: sort-algorithm-heapsort-mergesort
 type: post
+summary: 排序是最基本也是最广泛的一种算法，很多非常高效的算法都需要经过排序预处理。如果有了排好序的数据，那么许多问题的解决将会变得非常简单。
 ---
 
 排序是最基本也是最广泛的一种算法，很多非常高效的算法都需要经过排序预处理。如果有了排好序的数据，那么许多问题的解决将会变得非常简单，例如：

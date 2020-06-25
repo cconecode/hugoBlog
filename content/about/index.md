@@ -11,7 +11,7 @@ type: about
 
 
 
-<i class="fa fa-github-alt"></i> Github: [@cconecode](https://github.com/cconecode)
+<i class="fa fa-github-alt"></i> Github: [@superchun](https://github.com/superchun)
 
 
 <i class="fa fa-envira"></i> *What happen in Vegas stays in Vegas*

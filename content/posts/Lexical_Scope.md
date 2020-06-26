@@ -1,7 +1,7 @@
 ---
 title: "Lexical Scope"
 date: 2020-06-25T23:20:35+08:00
-tags: ["web", "JS"]
+tags: ["Web", "JS"]
 slug: lexical_scope
 type: post
 summary: 最近在学习 JS，在看《JavaScript 权威指南》的时候看到 `JavaScript uses lexical scoping`，当时只以为是 JS 的一个语言特性而已，就没太注意。但看到后面却发现，这个特性与 JS 的 `Closure` 也就是闭包大有关联。于是，就想弄懂究竟什么是 `lexical scoping`。

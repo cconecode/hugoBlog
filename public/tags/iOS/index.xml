@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iOS on 悉达多｜PainMaker</title>
+    <link>https://superchun.net/tags/iOS/</link>
+    <description>Recent content in iOS on 悉达多｜PainMaker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 05 Nov 2019 15:38:21 +0000</lastBuildDate>
+    
+	<atom:link href="https://superchun.net/tags/iOS/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>What&#39;s New in Xcode11</title>
+      <link>https://superchun.net/post/whats-new-in-xcode11/</link>
+      <pubDate>Tue, 05 Nov 2019 15:38:21 +0000</pubDate>
+      
+      <guid>https://superchun.net/post/whats-new-in-xcode11/</guid>
+      <description>WWDC 2019 已经过去快半年多了，Xcode 11 更新也有段时间了。用了一段时间之后，发现 Xcode 11 较之 Xcode 10 还是有许多地方不一样的，于是便看了 &lt;a href=&#34;https://developer.apple.com/videos/play/wwdc2019/401/&#34;&gt;WWDC 2019 Session 401&lt;/a&gt;，顺便做一下记录。</description>
+    </item>
+    
+  </channel>
+</rss>

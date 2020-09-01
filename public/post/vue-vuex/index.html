@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.60.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Vue学习系列(六)：Vuex | 悉达多｜PainMaker</title>
+    <meta property="og:title" content="Vue学习系列(六)：Vuex - 悉达多｜PainMaker">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2020-07-20T22:39:13&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2020-07-20T22:39:13&#43;08:00">
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="Vue学习系列(六)：Vuex">
+        
+    <meta name="author" content="悉达多">
+    <meta property="og:url" content="https://superchun.net/post/vue-vuex/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153875253-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-153875253-1');
+    </script>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.0/styles/monokai-sublime.min.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.0/highlight.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.0/languages/dart.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                <a id="logo" href="https://superchun.net">
+                        悉达多｜PainMaker
+                    </a>  
+                <p class="description">知也者，所以知也，而不必知</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://superchun.net">首页</a> 
+                    <a  href="https://superchun.net/archives/" title="归档">归档</a> 
+                    <a  href="https://superchun.net/about/" title="关于">关于</a> 
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="body">
+        
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">Vue学习系列(六)：Vuex</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2020年7月20日
+                        </date>
+                        
+                        
+                        <div class="post-meta">
+                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            <p>Vuex 是 Vue 下的一个状态管理模式，采用集中式存储管理应用所有组件的状态。所谓集中式就是所有的状态都包含在一个“文件”中，而这个文件就是 Vuex 的核心——store。</p>
+<p>Vuex 的核心思想就是把组件的共享状态抽取出来，通过一个全局单例进行管理。这种模式类似于数据结构里面的树，这样既可以维持状态间的独立，也可以访问树中任一位置，即可以在任一位置获取状态或触发行为。</p>
+<p>状态管理的核心在于<strong>状态</strong>、<strong>视图</strong>、<strong>行为</strong>。首先我们有一个用户界面，就是状态管理中的视图。当用户在界面上有所操作，即触发了一个行为时，视图后面的数据将得到更新，即状态的更新，状态的更新也会导致视图的变化。三者之间的行为构成了状态的管理。其中的问题在于：一、当有多个视图依赖于同一状态的时候如何处理。二、来自不同视图的行为需要变更同一状态时的处理。而 Vuex 状态树的思想则可以解决上面的这两个问题。</p>
+<p>Vuex 的核心概念主要是：<strong>State</strong>、<strong>Getter</strong>、<strong>Mutation</strong>、<strong>Action</strong>、<strong>Module</strong>。</p>
+<h2 id="vuex-">Vuex 思路</h2>
+<p>正如上面所提到的，Vuex 应用的核心就是 store。store 基本上是一个容器，里面包含着应用中大部分的状态。它和全局对象的主要不同之处有两点：</p>
+<ol>
+<li>Vuex 的状态存储是响应式的。即若 store 中的状态发生变化，所对应的组件也会相应地立即更新。</li>
+<li>不能直接改变 store 中的状态。改变 store 中状态的唯一方法就是显式地<strong>提交 (commit) mutation</strong>。这样做的目的是方便跟踪每一个状态的变化。</li>
+</ol>
+<p>Vuex 使用<code>new Vuex.Store({})</code>的方式声明一个 store，store 中管理着 state、mutation、module 等。state 中主要存储的是数据，mutation 中主要是对数据源更新的实现。在创建 store 之前，需要先声明<code>Vue.use(Vuex)</code> 。下面是一个简单的例子：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">store</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vuex</span>.<span style="color:#a6e22e">Store</span>({
+	<span style="color:#a6e22e">state</span><span style="color:#f92672">:</span> {
+		<span style="color:#a6e22e">count</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+	},
+	<span style="color:#a6e22e">mutation</span><span style="color:#f92672">:</span> {
+		<span style="color:#a6e22e">increment</span> (<span style="color:#a6e22e">state</span>) {
+			<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">count</span><span style="color:#f92672">++</span>
+		}
+	}
+})
+</code></pre></div><p>创建完 store 之后，就可以通过<code>store.state</code>来获取状态对象，通过<code>store.commit</code>方法触发状态更新：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">commit</span>(<span style="color:#e6db74">&#39;increment&#39;</span>)
+<span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">count</span>
+</code></pre></div><p>Vuex 还提供了一个从根组件向所有子组件，以<code>store</code>选项的方式注入一个 store。这样，所有的子组件都可以方便地访问<code>this.$store</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+	<span style="color:#a6e22e">store</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">store</span>
+})
+</code></pre></div><h2 id="state">State</h2>
+<p>state 的作用是存储状态的，也就是所谓的数据。每个 Vuex 应用都只包含了一个 store 实例，也就是说所有的状态都存储在一个对象中。这样做的目的是为了能够直接地定位任一特定的状态片段，在调试的过程中也能轻易地获取整个当前应用状态快照。</p>
+<h3 id="heading">状态读取</h3>
+<p>因为 Vue 的状态存储是响应式的，所以从 store 实例中读取状态的最佳方法是：在组件的 computed 中返回想要的状态：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+	<span style="color:#a6e22e">computed</span><span style="color:#f92672">:</span> {
+		<span style="color:#a6e22e">count</span> () {
+			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">count</span>
+		}
+	}
+}
+</code></pre></div><p>在根组件以 store 选项注入 store 实例的时候，子组件可以通过<code>this.$store</code>访问到 store 实例。</p>
+<h3 id="mapstate-">mapState 辅助函数</h3>
+<p>Vuex 提供了一个<code>mapState</code>辅助函数帮助我们生成计算属性，在一个组件需要读取多个状态时非常有用。因为可以简化 computed 中的重复和冗余：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">mapState</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vuex&#39;</span>
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#a6e22e">computed</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">mapState</span>({
+    <span style="color:#75715e">// 箭头函数简练代码
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">count</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">state</span> =&gt; <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">count</span>,
+    <span style="color:#75715e">// 传字符串参数 &#39;count&#39; 等同于 `state =&gt; state.count`
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">countAlias</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;count&#39;</span>,
+    <span style="color:#75715e">// 为了能够用 `this` 获取局部状态，必须使用常规函数
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">countPlusLocalState</span> (<span style="color:#a6e22e">state</span>) {
+      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">count</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">localCount</span>
+    }
+  })
+}
+</code></pre></div><p>当计算属性的名称和 state 子节点的名称相同时，还可以给<code>mapState</code>传一个字符串数组：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">computed</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">mapState</span>([
+	<span style="color:#e6db74">&#39;count&#39;</span>
+])
+</code></pre></div><h3 id="mapstate-1">mapState 与对象展开运算符的结合</h3>
+<p><code>mapState</code>函数返回的是一个对象，如果需要在局部计算属性中使用的话，会遇到一些麻烦。使用对象展开运算符则可以很方便地解决这个问题。</p>
+<p>首先来说一说对象展开运算符，它比较常见的是用在数组当中，对数组中的元素进行展开。假设一个函数需要传递三个参数，可以把这三个参数放进一个数组中，然后在函数调用的时候，对数组进行展开：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">functio</span> <span style="color:#a6e22e">func</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">z</span>) {
+	<span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>}
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+<span style="color:#a6e22e">func</span>(...<span style="color:#a6e22e">args</span>) <span style="color:#75715e">// ...args 将数组展开成 1, 2, 3，恰好对应到函数的三个参数
+</span></code></pre></div><p>又或者可以将一个数组混合到另一个数组中：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, ...<span style="color:#a6e22e">a</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>] <span style="color:#75715e">// b = [0, 1, 2, 3, 4, 5]
+</span></code></pre></div><p>同样地，也可以用在一个对象上：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">c</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>, <span style="color:#a6e22e">d</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span>}
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>, ...<span style="color:#a6e22e">x</span>} <span style="color:#75715e">// y = {a: 1, b: 2, c: 3, d: 4}
+</span></code></pre></div><p>对象展开运算符可以将一个对象混入到另一个对象中。将对象运算符应用到<code>mapState</code>上，就可以和局部对象混合使用了。在没有使用对象展开运算符时，我们的局部对象也需要写在<code>mapState</code>中，有了对象展开运算符之后，局部对象和<code>mapState</code>就可以各自维护自己的数据了。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">computed</span><span style="color:#f92672">:</span> {
+	<span style="color:#a6e22e">localComputed</span> { <span style="color:#75715e">//... },
+</span><span style="color:#75715e"></span>	...<span style="color:#a6e22e">mapState</span>({
+		<span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>	})
+}
+</code></pre></div><h2 id="getter">Getter</h2>
+<p>Vuex 中的 getter 跟 Vue 中的 computed 类似，都可以允许我们对数据进行额外的操作。getter 的返回值也会根据依赖缓存起来，只有当它的依赖发生改变时才会被重新计算。</p>
+<p>getter 接受 state 为它的第一个参数：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vuex</span>.<span style="color:#a6e22e">Store</span>({
+  <span style="color:#a6e22e">state</span><span style="color:#f92672">:</span> { <span style="color:#75715e">//... }
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">getters</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">someTodo</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">state</span> =&gt; {
+      <span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>    }
+  }
+})
+</code></pre></div><p>getter 也可以接受其他 getter 作为它的第二个参数：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">getters</span><span style="color:#f92672">:</span> {
+	<span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">otherTogo</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">getters</span>) =&gt; {
+		<span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>	}
+}
+</code></pre></div><p>可以通过<code>store.getters</code>访问 getter 对象，并以属性的形式访问其中的值：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">getters</span>.<span style="color:#a6e22e">someTodo</span>
+</code></pre></div><p>除此之外，还可以通过让 getter 返回一个函数，来实现给 getter 传参。在对 store 里的数组进行查询时非常有用：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">getters</span><span style="color:#f92672">:</span> {
+	<span style="color:#a6e22e">getTodoById</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">state</span>) =&gt; (<span style="color:#a6e22e">id</span>) =&gt; {
+		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">todos</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">todo</span> =&gt; <span style="color:#a6e22e">todo</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">id</span>)
+	}
+}
+</code></pre></div><p>需要注意的是，<strong>通过方法访问 getter 时，每次都会进行调用，而不会缓存结果</strong>。</p>
+<h3 id="mapgetters-">mapGetters 辅助函数</h3>
+<p>同 state 一样，getter 也有一个辅助函数<code>mapGetters</code>。<code>mapGetters</code>辅助函数的作用仅仅是将 store 中的 getter 映射到局部计算属性：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">mapGetters</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vuex&#39;</span>
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+	<span style="color:#a6e22e">computed</span><span style="color:#f92672">:</span> {
+    ...<span style="color:#a6e22e">mapGetters</span>([
+      <span style="color:#e6db74">&#39;someTodo&#39;</span>,
+      <span style="color:#e6db74">&#39;otherTodo&#39;</span>
+    ])
+  }
+}
+</code></pre></div><p>也可以给<code>mapGetters</code>传一个对象，将 getter 属性取一个子组件中的别名：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">...<span style="color:#a6e22e">mapGetters</span>({
+	<span style="color:#a6e22e">doneTodo</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;someTodo&#39;</span>
+})
+</code></pre></div><h2 id="mutation">Mutation</h2>
+<p>上面说到过，更改 store 中的状态的唯一方法就是显式地提交 mutation。而 mutation 本身是一个<strong>事件类型（type）<strong>和一个</strong>回调函数（handler）</strong>，回调函数就是状态更改的具体实现，这个回调函数接受 state 为它的第一个参数：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vuex</span>.<span style="color:#a6e22e">Store</span>({
+	<span style="color:#a6e22e">mutations</span><span style="color:#f92672">:</span> {
+		<span style="color:#a6e22e">increment</span> (<span style="color:#a6e22e">state</span>) {
+			<span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>		}
+	}
+})
+</code></pre></div><p>注意的是，不能直接调用一个 mutation 回调函数，而是需要触发一个 mutation type，调用此函数。而触发的方法就是用相应的 type 调用<code>store.commit</code>方法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">commit</span>(<span style="color:#e6db74">&#39;increment&#39;</span>)
+</code></pre></div><p>可以用 mutation 的 payload 当作额外的参数进行传入，这样 store.commit 的时候，就可以进行传参了：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">mutations</span><span style="color:#f92672">:</span> {
+	<span style="color:#a6e22e">increment</span> (<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">n</span>) {
+		<span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>	}
+}
+
+<span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">commit</span>(<span style="color:#e6db74">&#39;increment&#39;</span>, <span style="color:#ae81ff">10</span>)
+</code></pre></div><p>在大多数情况下，payload 会是一个对象：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">mutations</span><span style="color:#f92672">:</span> {
+	<span style="color:#a6e22e">increment</span> (<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">payload</span>) {
+		<span style="color:#75715e">// payload.property
+</span><span style="color:#75715e"></span>	}
+}
+
+<span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">commit</span>(<span style="color:#e6db74">&#39;increment&#39;</span>, {<span style="color:#a6e22e">count</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10</span>})
+</code></pre></div><p>还可以以对象风格提交 mutation，这时，对象中必须包含<code>type</code>属性，对象中的 type 对应 mutation 的 type：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">commit</span>({
+	<span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;increment&#39;</span>,
+	<span style="color:#a6e22e">count</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10</span>
+})
+</code></pre></div><h3 id="mutation-">Mutation 需要遵守的规则</h3>
+<p>mutation 需要遵守以下注意事项：</p>
+<ol>
+<li>
+<p>最好提前在 store 中初始化好所有属性</p>
+</li>
+<li>
+<p>当需要在对象上添加新属性时，应该</p>
+<ul>
+<li>
+<p>使用`Vue.set(obj, &lsquo;newProp&rsquo;, 123)，或者</p>
+</li>
+<li>
+<p>以新对象替换老对象</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> {...<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">obj</span>, <span style="color:#a6e22e">newProp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">123</span>} <span style="color:#75715e">// 这里的对象展开运算符类似深拷贝
+</span></code></pre></div></li>
+</ol>
+<h3 id="mutation-1">Mutation 必须是同步函数</h3>
+<p>有一条重要的原则就是 <strong>mutation 必须是同步函数</strong>。如果是异步的，那么回调函数中的状态变更是不可追踪的，不知道回调函数将会在什么时候被调用。</p>
+<h3 id="-mutation-">使用常量类型替代 mutation 事件类型</h3>
+<p>将 mutation 的事件类型用常量进行替代，并且放在同一文件中进行管理。这样做可以使得对整个应用中的 mutation 一目了然，更好地组织项目结构，同时也有利于 linter 之类的工具发挥作用：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// mutation-type.js 用来存放 mutation 事件类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">MUTATION_A</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;MUTATION_A&#39;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">MUTATION_A</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./mutation-type.js&#39;</span>
+
+<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vuex</span>.<span style="color:#a6e22e">Store</span>({
+	<span style="color:#a6e22e">mutations</span><span style="color:#f92672">:</span> {
+		[<span style="color:#a6e22e">MUTATION_A</span>] (<span style="color:#a6e22e">state</span>) {
+			<span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>		}
+	}
+})
+</code></pre></div><h3 id="mapmutations-">mapMutations 辅助函数</h3>
+<p>mutation 也有一个辅助函数——<code>mapMutations</code>。它的作用是将组件中的<code>this.$store.commit('xxx')</code> 映射成组件中的 methods：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">mapMutations</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vuex&#39;</span>
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+    ...<span style="color:#a6e22e">mapMutations</span>([
+      <span style="color:#e6db74">&#39;increment&#39;</span> <span style="color:#75715e">// 将 `this.increment` 映射为 `this.$store.commit(&#39;increment&#39;)`
+</span><span style="color:#75715e"></span>    ])
+  }
+}
+</code></pre></div><h2 id="action">Action</h2>
+<p>Action 类似于 mutation，不同的点在于：</p>
+<ul>
+<li>Action 提交的是 mutation，而不是直接变更状态</li>
+<li>Action 可以包含任意异步操作</li>
+</ul>
+<p>下面是一个简单的 action：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vuex</span>.<span style="color:#a6e22e">Store</span>({
+	<span style="color:#a6e22e">mutations</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">increment</span> (<span style="color:#a6e22e">state</span>) {
+      <span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>    }
+  },
+  <span style="color:#a6e22e">actions</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">increment</span> (<span style="color:#a6e22e">context</span>) {
+      <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">commit</span>(<span style="color:#e6db74">&#39;increment&#39;</span>)
+    }
+  }
+})
+</code></pre></div><p>action 函数接受一个与 stoer 实例具有相同属性和方法的 context 对象，所以可以通过<code>context.commit</code>提交一个 mutation，或者通过<code>context.state</code>来获取状态。</p>
+<p>此外，在实践中，会经常用到<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">参数解构</a>来简化代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">actions</span><span style="color:#f92672">:</span> {
+	<span style="color:#a6e22e">increment</span>({ <span style="color:#a6e22e">commit</span> }) {
+		<span style="color:#a6e22e">commit</span>(<span style="color:#e6db74">&#39;increment&#39;</span>)
+	}
+}
+</code></pre></div><h3 id="-action">分发 Action</h3>
+<p>Action 通过<code>store.dispatch</code>方法触发：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">dispatch</span>(<span style="color:#e6db74">&#39;increment&#39;</span>)
+</code></pre></div><p>表面看上去与 mutation 没有什么区别，主要是 action 内部可以执行异步操作，而 mutation 必须是同步的：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">actions</span><span style="color:#f92672">:</span> {
+	<span style="color:#a6e22e">incrementAsync</span>({ <span style="color:#a6e22e">commit</span> }) {
+		<span style="color:#a6e22e">setTimeout</span>( () =&gt; {
+			<span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>		}, <span style="color:#ae81ff">1000</span>)
+	}
+}
+</code></pre></div><p>Action 同样支持 payload 和对象方式进行分发：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 以 payload 方式分发
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">dispatch</span>(<span style="color:#e6db74">&#39;increment&#39;</span>, {<span style="color:#a6e22e">count</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">10</span>}) 
+
+<span style="color:#75715e">// 以对象方式进行分发
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">dispatch</span>({
+	<span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;increment&#39;</span>,
+	<span style="color:#a6e22e">count</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10</span>
+})
+</code></pre></div><h3 id="-action1">在组件中分发 Action</h3>
+<p>可以在组件中使用<code>this.$store.dispatch('xxx')</code>分发 action，也可以使用辅助函数<code>mapActions</code>将组件中的 methods 映射为<code>store.dispatch</code>调用：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">mapActions</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vuex&#39;</span>
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+    ...<span style="color:#a6e22e">mapActions</span>([
+      <span style="color:#e6db74">&#39;increment&#39;</span> <span style="color:#75715e">// 将 `this.increment` 映射为 `this.$store.dispatch(&#39;increment&#39;)`
+</span><span style="color:#75715e"></span>    ])
+  }
+}
+</code></pre></div><h2 id="module">Module</h2>
+<p>当应用变得庞大，状态越来越多时，将所有状态放到一个 store 对象中，就会显得非常臃肿且难以管理。为了解决这个问题，Vuex 提供了 modules 选项，可以将 store 划分成多个细小的 module，每个 module 都拥有自己的 state、mutation、action、getter：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">moduleA</span> <span style="color:#f92672">=</span> {
+	<span style="color:#a6e22e">state</span><span style="color:#f92672">:</span> () =&gt; ({ ... }),
+	<span style="color:#a6e22e">mutations</span><span style="color:#f92672">:</span> { ... },
+	<span style="color:#a6e22e">actions</span><span style="color:#f92672">:</span> { ... },
+	<span style="color:#a6e22e">getters</span><span style="color:#f92672">:</span> { ... }
+}
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">store</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vuex</span>.<span style="color:#a6e22e">Store</span>({
+	<span style="color:#a6e22e">modules</span><span style="color:#f92672">:</span> {
+		<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">moduleA</span>
+	}
+})
+
+<span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">a</span> <span style="color:#75715e">// 模块 A 的状态
+</span></code></pre></div><h3 id="heading1">模块的状态</h3>
+<p>对于模块内部的 mutation 和 getter，回调函数接收的第一个参数是模块的<strong>局部状态对象</strong>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">moduleA</span> <span style="color:#f92672">=</span> {
+	<span style="color:#a6e22e">mutations</span><span style="color:#f92672">:</span> {
+		<span style="color:#a6e22e">increment</span> (<span style="color:#a6e22e">state</span>) {
+			<span style="color:#75715e">// state 对象是模块的局部状态
+</span><span style="color:#75715e"></span>		}
+	}
+}
+</code></pre></div><p>对于模块内部的 action，局部状态通过<code>context.state</code>暴露，根节点状态则为<code>context.rootState</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">moduleA</span> <span style="color:#f92672">=</span> {
+	<span style="color:#a6e22e">actions</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">increment</span>({ <span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">commit</span>, <span style="color:#a6e22e">rootState</span>}) {
+      <span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>    }
+  }
+}
+</code></pre></div><p>对于模块内部的 getter，根节点状态会作为第三个参数传进来：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">moduleA</span> <span style="color:#f92672">=</span> {
+	<span style="color:#a6e22e">getters</span><span style="color:#f92672">:</span> {
+		<span style="color:#a6e22e">increment</span>(<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">getters</span>, <span style="color:#a6e22e">rootState</span>) {
+			<span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>		}
+	}
+}
+</code></pre></div><h3 id="heading2">命名空间</h3>
+<p>默认情况下，模块内部的 action、getter 和 mutation 是注册全局命名空间的，这样可以使得多个模块能够对同一 mutation 或 action 作出相应。</p>
+<p>通过添加<code>namespaces: true</code>，可以使一个模块称为带命名空间的模块。当模块注册后，它的 getter、mutation 和 action 都会自动根据模块注册的路径调整命名：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">store</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vuex</span>.<span style="color:#a6e22e">Store</span>({
+	<span style="color:#a6e22e">modules</span><span style="color:#f92672">:</span> {
+		<span style="color:#a6e22e">account</span><span style="color:#f92672">:</span> {
+			<span style="color:#a6e22e">namespaced</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+      
+      <span style="color:#a6e22e">mutations</span><span style="color:#f92672">:</span> {
+      	<span style="color:#a6e22e">addAcount</span>() { ... } <span style="color:#75715e">// 通过 commit(&#39;account/addAcount&#39;) 提交
+</span><span style="color:#75715e"></span>    	}
+		}
+	}
+})
+</code></pre></div><p>模块内部会收到局部化的 getter、dispatch 和 commit，不需要在同一模块内部额外添加命名空间。</p>
+<h4 id="heading3">在带命名空间的模块内访问全局内容</h4>
+<p>在模块内的 getter 中，全局的 state 和 getter 将通过函数的第三个和第四个参数以<code>rootState</code>和<code>rootGetters</code>参数名进行传递。</p>
+<p>如果需要在模块内分发全局 action 或提交全局 mutation，将<code>{root: true}</code>作为第三个参数传递给 dispatch 或 commit 即可。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">modules</span><span style="color:#f92672">:</span> {
+	<span style="color:#a6e22e">foo</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">namespaced</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+    <span style="color:#a6e22e">getters</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">someGetter</span> (<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">getters</span>, <span style="color:#a6e22e">rootState</span>, <span style="color:#a6e22e">rootGetters</span>) {
+        <span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>      }
+    },
+    <span style="color:#a6e22e">actions</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">someAction</span> ({ <span style="color:#a6e22e">dispatch</span>, <span style="color:#a6e22e">commit</span>, <span style="color:#a6e22e">getters</span>, <span style="color:#a6e22e">rootGetters</span> }) {
+        <span style="color:#a6e22e">dispatch</span>(<span style="color:#e6db74">&#39;someGlobalAction&#39;</span>, <span style="color:#66d9ef">null</span>, { <span style="color:#a6e22e">root</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> }) <span style="color:#75715e">// 分发全局 action
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">commit</span>(<span style="color:#e6db74">&#39;globalMutation&#39;</span>, <span style="color:#66d9ef">null</span>, { <span style="color:#a6e22e">root</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> }) <span style="color:#75715e">// 提交全局 mutation
+</span><span style="color:#75715e"></span>      }
+    }
+  }
+}
+</code></pre></div><h4 id="heading4">带命名空间的辅助函数</h4>
+<p>当在组件中使用带命名空间模块的<code>mapState</code>、<code>mapGetters</code>、<code>mapActions</code>和<code>mapMutations</code>时，写起来可能会比较繁琐：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">computed</span><span style="color:#f92672">:</span> {
+	...<span style="color:#a6e22e">mapState</span>({
+    <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">state</span> =&gt; <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">some</span>.<span style="color:#a6e22e">nested</span>.<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">a</span>,
+    <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">state</span> =&gt; <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">some</span>.<span style="color:#a6e22e">nested</span>.<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">b</span>
+  })
+},
+<span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+  ...<span style="color:#a6e22e">mapActions</span>([
+    <span style="color:#e6db74">&#39;some/nested/module/foo&#39;</span>,
+    <span style="color:#e6db74">&#39;some/nested/module/bar&#39;</span>
+  ])
+}
+</code></pre></div><p>对于这种情况，可以将模块的路径字符串作为第一个参数传递给这些辅助函数，这样自动将该模块作为上下文，简化代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">computed</span><span style="color:#f92672">:</span> {
+  ...<span style="color:#a6e22e">mapState</span>(<span style="color:#e6db74">&#39;some/mested/module&#39;</span>, {
+    <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">state</span> =&gt; <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">a</span>,
+    <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">state</span> =&gt; <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">b</span>
+  })
+},
+<span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+  ...<span style="color:#a6e22e">mapActions</span>(<span style="color:#e6db74">&#39;some/nested/module&#39;</span>, [
+    <span style="color:#e6db74">&#39;foo&#39;</span>,
+    <span style="color:#e6db74">&#39;bar&#39;</span>
+  ])
+}
+</code></pre></div><p>或者，可以通过使用<code>createNamespacedHelpers</code>创建基于某个带有命名空间模块的特定辅助函数，函数的返回值是一个将模块作为上下文的绑定辅助函数：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">improt</span> { <span style="color:#a6e22e">createNamespcedHelpers</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vuex&#39;</span>
+
+<span style="color:#a6e22e">cons</span> { <span style="color:#a6e22e">mapState</span>, <span style="color:#a6e22e">mapActions</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">createNamespacedHlepers</span>(<span style="color:#e6db74">&#39;some/nested/module&#39;</span>)
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+	<span style="color:#a6e22e">computed</span><span style="color:#f92672">:</span> {
+    ...<span style="color:#a6e22e">mapState</span>({
+      <span style="color:#75715e">// 在 `some/nested/module` 中查找
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">state</span> =&gt; <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">a</span>,
+      <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">state</span> =&gt; <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">b</span>
+    })
+  },
+  <span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+    ...<span style="color:#a6e22e">mapActions</span>([
+      <span style="color:#75715e">// 在 `some/nested/module` 中查找
+</span><span style="color:#75715e"></span>      <span style="color:#e6db74">&#39;foo&#39;</span>,
+      <span style="color:#e6db74">&#39;bar&#39;</span>
+    ])
+  }
+}
+</code></pre></div><h3 id="heading5">动态注册模块</h3>
+<p>在 store 创建之后，可以使用<code>store.registerModule</code>方法动态注册模块：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">store</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vuex</span>.<span style="color:#a6e22e">Store</span>({ <span style="color:#75715e">//...})
+</span><span style="color:#75715e"></span>
+  <span style="color:#75715e">// 注册模块 `myModule`
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">registerModule</span>(<span style="color:#e6db74">&#39;myModule&#39;</span>, {
+  <span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>})
+
+<span style="color:#75715e">// 注册模块 &#39;nested/myModule&#39;
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">registerModule</span>([<span style="color:#e6db74">&#39;nested&#39;</span>, <span style="color:#e6db74">&#39;myModule&#39;</span>], {
+  <span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>})
+</code></pre></div><p>也可以通过<code>store.unregisterModule()</code>方法来动态卸载模块。此方法只能卸载动态模块，而不能卸载静态模块。</p>
+<p>通过<code>store.hasModule()</code>方法检查该模块是否已经被注册到 store 中。</p>
+
+                        </div>
+
+                        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://superchun.net">悉达多</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://superchun.net/post/vue-vuex/">https://superchun.net/post/vue-vuex/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/vue-slot/">Vue学习系列(五)：插槽</a></li>
+        
+        <li><a href="/post/vue-remain-knowleage/">Vue学习系列(四)：剩余基础知识</a></li>
+        
+        <li><a href="/post/vue-class-style-bind/">Vue学习系列(三)：Class与Style绑定</a></li>
+        
+        <li><a href="/post/vue-computedproperty/">Vue学习系列(二)：计算属性与侦听器</a></li>
+        
+        <li><a href="/post/vue-templategrammar/">Vue学习系列(一)：模板语法</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://superchun.net/tags/Web">Web</a></li>
+                                
+                                <li><a href="https://superchun.net/tags/Vue">Vue</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "superchun/blogcomment"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="/search/" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://superchun.net">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://superchun.net/post/oc-mutable-immutble/" title="OC中的mutable与immutable及它们的修饰符">OC中的mutable与immutable及它们的修饰符</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/swift-initial/" title="Swift的初始化">Swift的初始化</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/swift-access-control/" title="Swift中的访问控制">Swift中的访问控制</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/vue-vuex/" title="Vue学习系列(六)：Vuex">Vue学习系列(六)：Vuex</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/vue-slot/" title="Vue学习系列(五)：插槽">Vue学习系列(五)：插槽</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/vue-remain-knowleage/" title="Vue学习系列(四)：剩余基础知识">Vue学习系列(四)：剩余基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/vue-class-style-bind/" title="Vue学习系列(三)：Class与Style绑定">Vue学习系列(三)：Class与Style绑定</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/vue-computedproperty/" title="Vue学习系列(二)：计算属性与侦听器">Vue学习系列(二)：计算属性与侦听器</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/vue-templategrammar/" title="Vue学习系列(一)：模板语法">Vue学习系列(一)：模板语法</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/js-promise/" title="JS中的Promise">JS中的Promise</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://superchun.net/tags/CSS/">CSS</a>
+    
+    <a href="https://superchun.net/tags/Cordova/">Cordova</a>
+    
+    <a href="https://superchun.net/tags/JS/">JS</a>
+    
+    <a href="https://superchun.net/tags/OC/">OC</a>
+    
+    <a href="https://superchun.net/tags/OpenGL-ES/">OpenGL ES</a>
+    
+    <a href="https://superchun.net/tags/Swift/">Swift</a>
+    
+    <a href="https://superchun.net/tags/Vue/">Vue</a>
+    
+    <a href="https://superchun.net/tags/Web/">Web</a>
+    
+    <a href="https://superchun.net/tags/git-ssh/">git ssh</a>
+    
+    <a href="https://superchun.net/tags/iOS/">iOS</a>
+    
+    <a href="https://superchun.net/tags/%E4%BA%8B%E4%BB%B6%E6%8B%A6%E6%88%AA/">事件拦截</a>
+    
+    <a href="https://superchun.net/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+    
+    <a href="https://superchun.net/tags/%E6%9D%82%E8%B0%88%E4%BD%8E%E8%AF%AD/">杂谈低语</a>
+    
+    <a href="https://superchun.net/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://superchun.net/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://superchun.net">悉达多｜PainMaker By 悉达多</a>. Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>. 
+    </div>
+</footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.13.0/flowchart.min.js" crossorigin="anonymous"></script>
+<script>
+    {
+        {
+            -
+            if .Params.flowchartDiagrams.options -
+        }
+    }
+    window.flowchartDiagramsOptions = {
+        {.Params.flowchartDiagrams.options | safeJS
+        }
+    }; {
+        {
+            -
+            else if .Site.Params.flowchartDiagrams.options -
+        }
+    }
+    window.flowchartDiagramsOptions = {
+        {.Site.Params.flowchartDiagrams.options | safeJS
+        }
+    }; {
+        {
+            -end -
+        }
+    }
+    (function() {
+        if (!window.flowchart) return;
+        const blocks = document.querySelectorAll('pre code.language-flowchart, pre code.language-flow');
+        for (let i = 0; i < blocks.length; i++) {
+            const block = blocks[i];
+            const rootElement = block.parentNode;
+            const container = document.createElement('div');
+            const id = `js-flowchart-diagrams-${i}`;
+            container.id = id;
+            container.className = 'align-center';
+            container.setAttribute("style", "overFlow-x:auto");
+            rootElement.parentNode.replaceChild(container, rootElement);
+            const diagram = flowchart.parse(block.childNodes[0].nodeValue);
+            diagram.drawSVG(id, window.flowchartDiagramsOptions ? window.flowchartDiagramsOptions : {});
+        }
+    })();
+</script>
+<script type="text/javascript">
+    
+    (function() {
+        $("pre code").parent().addClass("line-numbers")
+    }());
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [
+                ['$', '$']
+            ],
+            processEscapes: true
+        }
+    };
+</script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-153875253-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+ 
+<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+<script type="text/javascript">
+(function(){
+	if (typeof self === 'undefined' || !self.Prism || !self.document) {
+		return;
+	}
+
+	if (!Prism.plugins.toolbar) {
+		console.warn('Copy to Clipboard plugin loaded before Toolbar plugin.');
+
+		return;
+	}
+
+	var ClipboardJS = window.ClipboardJS || undefined;
+
+	if (!ClipboardJS && typeof require === 'function') {
+		ClipboardJS = require('clipboard');
+	}
+
+	var callbacks = [];
+
+	if (!ClipboardJS) {
+		var script = document.createElement('script');
+		var head = document.querySelector('head');
+
+		script.onload = function() {
+			ClipboardJS = window.ClipboardJS;
+
+			if (ClipboardJS) {
+				while (callbacks.length) {
+					callbacks.pop()();
+				}
+			}
+		};
+
+		script.src = 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js';
+		head.appendChild(script);
+	}
+
+	Prism.plugins.toolbar.registerButton('copy-to-clipboard', function (env) {
+		var linkCopy = document.createElement('button');
+		linkCopy.textContent = '复制代码';
+
+		if (!ClipboardJS) {
+			callbacks.push(registerClipboard);
+		} else {
+			registerClipboard();
+		}
+
+		return linkCopy;
+
+		function registerClipboard() {
+			var clip = new ClipboardJS(linkCopy, {
+				'text': function () {
+					return env.code;
+				}
+			});
+
+			clip.on('success', function() {
+				linkCopy.textContent = '复制成功!';
+
+				resetText();
+			});
+			clip.on('error', function () {
+				linkCopy.textContent = '按 Ctrl+C 复制';
+
+				resetText();
+			});
+		}
+
+		function resetText() {
+			setTimeout(function () {
+				linkCopy.textContent = '复制代码';
+			}, 5000);
+		}
+	});
+})();
+
+</script>
+</body>
+</html>

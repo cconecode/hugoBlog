@@ -6,10 +6,82 @@
     <description>Recent content in Web on 悉达多｜PainMaker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 01 Jul 2020 13:31:41 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2020 22:39:13 +0800</lastBuildDate>
     
 	<atom:link href="https://superchun.net/tags/Web/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vue学习系列(六)：Vuex</title>
+      <link>https://superchun.net/post/vue-vuex/</link>
+      <pubDate>Mon, 20 Jul 2020 22:39:13 +0800</pubDate>
+      
+      <guid>https://superchun.net/post/vue-vuex/</guid>
+      <description>Vue 文档学习第六篇——关于 Vue 中的状态管理模式：Vuex</description>
+    </item>
+    
+    <item>
+      <title>Vue学习系列(五)：插槽</title>
+      <link>https://superchun.net/post/vue-slot/</link>
+      <pubDate>Thu, 16 Jul 2020 22:37:48 +0800</pubDate>
+      
+      <guid>https://superchun.net/post/vue-slot/</guid>
+      <description>Vue 文档学习第五篇——关于 Vue 中比较重要的一个知识点：插槽</description>
+    </item>
+    
+    <item>
+      <title>Vue学习系列(四)：剩余基础知识</title>
+      <link>https://superchun.net/post/vue-remain-knowleage/</link>
+      <pubDate>Tue, 14 Jul 2020 22:35:59 +0800</pubDate>
+      
+      <guid>https://superchun.net/post/vue-remain-knowleage/</guid>
+      <description>Vue 文档学习第四篇——关于 Vue 中剩下的一些基础知识和前面的总结</description>
+    </item>
+    
+    <item>
+      <title>Vue学习系列(三)：Class与Style绑定</title>
+      <link>https://superchun.net/post/vue-class-style-bind/</link>
+      <pubDate>Sun, 12 Jul 2020 22:34:05 +0800</pubDate>
+      
+      <guid>https://superchun.net/post/vue-class-style-bind/</guid>
+      <description>Vue 文档学习第三篇——关于 Class 与 Style 绑定</description>
+    </item>
+    
+    <item>
+      <title>Vue学习系列(二)：计算属性与侦听器</title>
+      <link>https://superchun.net/post/vue-computedproperty/</link>
+      <pubDate>Sat, 11 Jul 2020 22:29:26 +0800</pubDate>
+      
+      <guid>https://superchun.net/post/vue-computedproperty/</guid>
+      <description>Vue 文档学习第二篇——关于计算属性与侦听器</description>
+    </item>
+    
+    <item>
+      <title>Vue学习系列(一)：模板语法</title>
+      <link>https://superchun.net/post/vue-templategrammar/</link>
+      <pubDate>Fri, 10 Jul 2020 22:26:40 +0800</pubDate>
+      
+      <guid>https://superchun.net/post/vue-templategrammar/</guid>
+      <description>Vue 文档学习第一篇——关于模板语法</description>
+    </item>
+    
+    <item>
+      <title>JS中的Promise</title>
+      <link>https://superchun.net/post/js-promise/</link>
+      <pubDate>Fri, 03 Jul 2020 22:23:04 +0800</pubDate>
+      
+      <guid>https://superchun.net/post/js-promise/</guid>
+      <description>JS 中关于 Promise 的学习和一点理解</description>
+    </item>
+    
+    <item>
+      <title>JS中的function</title>
+      <link>https://superchun.net/post/js-function/</link>
+      <pubDate>Fri, 03 Jul 2020 22:16:53 +0800</pubDate>
+      
+      <guid>https://superchun.net/post/js-function/</guid>
+      <description>JS 中 function 的学习记录</description>
+    </item>
     
     <item>
       <title>CSS学习(七)：Grid布局</title>

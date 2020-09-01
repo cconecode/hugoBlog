@@ -6,10 +6,28 @@
     <description>Recent content in JS on 悉达多｜PainMaker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 25 Jun 2020 23:20:35 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2020 22:23:04 +0800</lastBuildDate>
     
 	<atom:link href="https://superchun.net/tags/JS/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JS中的Promise</title>
+      <link>https://superchun.net/post/js-promise/</link>
+      <pubDate>Fri, 03 Jul 2020 22:23:04 +0800</pubDate>
+      
+      <guid>https://superchun.net/post/js-promise/</guid>
+      <description>JS 中关于 Promise 的学习和一点理解</description>
+    </item>
+    
+    <item>
+      <title>JS中的function</title>
+      <link>https://superchun.net/post/js-function/</link>
+      <pubDate>Fri, 03 Jul 2020 22:16:53 +0800</pubDate>
+      
+      <guid>https://superchun.net/post/js-function/</guid>
+      <description>JS 中 function 的学习记录</description>
+    </item>
     
     <item>
       <title>Lexical Scope</title>

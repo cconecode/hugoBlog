@@ -6,7 +6,7 @@
     <description>Recent content in Tags on 悉达多｜PainMaker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 03 Aug 2020 22:50:07 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 15 Aug 2020 14:20:48 +0800</lastBuildDate>
     
 	<atom:link href="https://superchun.net/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>iOS</title>
       <link>https://superchun.net/tags/iOS/</link>
-      <pubDate>Mon, 03 Aug 2020 22:50:07 +0800</pubDate>
+      <pubDate>Sat, 15 Aug 2020 14:20:48 +0800</pubDate>
       
       <guid>https://superchun.net/tags/iOS/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Swift</title>
+      <link>https://superchun.net/tags/Swift/</link>
+      <pubDate>Sat, 15 Aug 2020 14:20:48 +0800</pubDate>
+      
+      <guid>https://superchun.net/tags/Swift/</guid>
       <description></description>
     </item>
     
@@ -26,15 +35,6 @@
       <pubDate>Mon, 03 Aug 2020 22:50:07 +0800</pubDate>
       
       <guid>https://superchun.net/tags/OC/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Swift</title>
-      <link>https://superchun.net/tags/Swift/</link>
-      <pubDate>Tue, 28 Jul 2020 22:48:37 +0800</pubDate>
-      
-      <guid>https://superchun.net/tags/Swift/</guid>
       <description></description>
     </item>
     

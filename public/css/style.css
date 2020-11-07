@@ -20,6 +20,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Jetbrains Mono Mono';
+    src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2');
+}
+
+
+
 /*!
  *  Hack typeface https://github.com/source-foundry/Hack
  *  License: https://github.com/source-foundry/Hack/blob/master/LICENSE.md
@@ -53,8 +60,13 @@
     font-weight: 700;
     font-style: italic;
   }
+
+  @font-face {
+      font-family: 'Roboto';
+      src: url('fonts/Roboto-Regular.ttf') format('truetype');
+  }
   
-  
+
 
 [class^="icon-"], [class*=" icon-"] {
     font-family: 'icomoon';
@@ -111,12 +123,12 @@
 }
 body {
     background-color:#ebebeb;
-    color:#444;
+    color:#343A40;
     font-size: 16px;
     /**
     font-family:"TIBch", "Classic Grotesque W01", "Helvetica Neue", Arial, "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
     **/
-    font-family: "Hack", "Iowan Old Style", "Ovo", "Hoefler Text", Georgia, "Times New Roman", "TIBch", "Source Han Sans", "PingFangSC-Regular", "Hiragino Sans GB", "STHeiti", "Microsoft Yahei", "Droid Sans Fallback", "WenQuanYi Micro Hei", sans-serif;
+    font-family: "Roboto", sans-serif,  "Iowan Old Style", "Ovo", "Hoefler Text", Georgia, "Times New Roman", "TIBch", "Source Han Sans", "PingFangSC-Regular", "Hiragino Sans GB", "STHeiti", "Microsoft Yahei", "Droid Sans Fallback", "WenQuanYi Micro Hei", sans-serif;
     /**-webkit-font-smoothing: antialiased;**/
     -moz-osx-font-smoothing: grayscale;
 }
@@ -139,7 +151,7 @@ a:hover, a:active {
 }
 
 p {
-    text-indent: 2em;
+    /* text-indent: 2em; */
 }
 
 blockquote p {
@@ -157,7 +169,7 @@ mark {
 }
 pre, code {
     background:#f8f8f8;
-    font-family:"Hack", Monaco, Menlo, Consolas, "Lucida Console", "Courier New", monospace;
+    font-family:  "Jetbrains Mono", Monaco, Menlo, Consolas, "Lucida Console", "Courier New", monospace;
     font-size:.95em;
 }
 pre {

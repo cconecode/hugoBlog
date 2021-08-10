@@ -1,405 +1,414 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-    
-    <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.60.1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>悉达多｜PainMaker | 知也者，所以知也，而不必知</title>
-    <meta property="og:title" content="悉达多｜PainMaker | 知也者，所以知也，而不必知">
-    <meta property="og:type" content="website">
-    <meta name="Keywords" content="">
-    <meta name="description" content="">
-    <meta property="og:url" content="https://superchun.net/">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="/css/normalize.css">
-    
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="alternate" type="application/rss+xml+xml" href="https://superchun.net/index.xml" title="悉达多｜PainMaker" />
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    
+<!DOCTYPE html>
+<html lang='zh' ><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
 
 
-    
-    
-</head>
+<title>悉达多｜Pain Maker</title>
+
+<meta name="generator" content="Hugo Eureka 0.8.3-dev" />
+<link rel="stylesheet" href="/css/eureka.min.css">
+<script defer src="/js/eureka.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/styles/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/highlight.min.js"
+   crossorigin></script>
+
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/languages/dart.min.js"
+     crossorigin></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js"
+   integrity="sha256-uNYoXefWRqv&#43;PsIF/OflNmwtKM4lStn9yrz2gVl6ymo="  crossorigin></script>
 
 
-<body>
-<header id="header" class="clearfix">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153875253-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
 
-        gtag('config', 'UA-153875253-1');
-    </script>
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.0/styles/monokai-sublime.min.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.0/highlight.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.0/languages/dart.min.js"></script>
-    <script>
-        hljs.initHighlightingOnLoad();
-    </script>
-    <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
-                
-                <h1>
-                    <a id="logo" href="https://superchun.net">
-                            悉达多｜PainMaker
-                        </a>
-                </h1>
-                 
-                <p class="description">知也者，所以知也，而不必知</p>
-            </div>
-            <div>
-                <nav id="nav-menu" class="clearfix">
-                    <a class="current" href="https://superchun.net">首页</a> 
-                    <a  href="https://superchun.net/archives/" title="归档">归档</a> 
-                    <a  href="https://superchun.net/about/" title="关于">关于</a> 
-                </nav>
-            </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+   integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" 
+  integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+   integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js" 
+  integrity="sha256-Zmpaaj&#43;GXFsPF5WdPArSrnW3b30dovldeKsW00xBVwE="  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_huc44501d68bc06dd287f5686a96b7c4ab_72759_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_huc44501d68bc06dd287f5686a96b7c4ab_72759_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="Eureka is a elegant and powerful theme for Hugo.">
+
+
+
+<meta property="og:title" content="悉达多｜Pain Maker" />
+<meta property="og:type" content="website" />
+
+
+<meta property="og:image" content="/images/favicon.png">
+
+
+<meta property="og:url" content="/" />
+
+
+
+
+
+<meta property="og:description" content="Eureka is a elegant and powerful theme for Hugo." />
+
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悉达多｜Pain Maker" />
+
+
+
+
+
+
+
+
+<meta property="article:section" content="" />
+
+
+<link rel="alternate" type="application/rss+xml" href="/index.xml" title="悉达多｜Pain Maker" />
+
+<body class="flex flex-col min-h-screen">
+  <header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
+    <div class="w-full max-w-screen-xl mx-auto"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="mr-6 text-primary-text text-xl font-bold">悉达多｜Pain Maker</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/#about" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">About</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">Posts</a>
+            <a href="/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">Docs</a>
         </div>
-    </div>
-</header>
 
-<div id="body">
-    <div class="container">
-        <div class="col-group">
-
-            <div class="col-8" id="main">
-                <div class="res-cons">
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://superchun.net/post/swift-oc/" title="Swift相对于OC的特性" >Swift相对于OC的特性</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年8月15日
-                            </date>
-                            
-                            <div class="post-content">
-                                Swift 在经过一段时间的发展，在 Swift5.0 ABI 稳定了，Swift 整个生态也比较丰富，使得可以在生产环境放心得使用 Swift 进行开发了。相对于 OC 繁琐的语法，以及外界不太认同的方括号调用，Swift 在语法层面及语言设计层面，显得更加 modern，开发起来也比较顺手……
-                            </div>
-                            <p class="readmore"><a href="https://superchun.net/post/swift-oc/">阅读全文</a></p>
-                        </article>
-                    
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://superchun.net/post/oc-mutable-immutble/" title="OC中的mutable与immutable及它们的修饰符" >OC中的mutable与immutable及它们的修饰符</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年8月3日
-                            </date>
-                            
-                            <div class="post-content">
-                                OC 中的对象有一个分类：<strong>可变（mutable）<strong>与</strong>不可变（inmutable）</strong>。比较常见的就是不可变 NSString、NSArray 和 NSDictionary，与可变的 NSMutableString、NSMutableArray 和 NSMutableDictionary。……
-                            </div>
-                            <p class="readmore"><a href="https://superchun.net/post/oc-mutable-immutble/">阅读全文</a></p>
-                        </article>
-                    
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://superchun.net/post/swift-initial/" title="Swift的初始化" >Swift的初始化</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年7月28日
-                            </date>
-                            
-                            <div class="post-content">
-                                初始化是类、结构体或枚举实例化的一个过程。在新实例可用之前，这个过程会给实例的存储属性设置一个初始值以及执行一些其他必须的设置或初始化。……
-                            </div>
-                            <p class="readmore"><a href="https://superchun.net/post/swift-initial/">阅读全文</a></p>
-                        </article>
-                    
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://superchun.net/post/swift-access-control/" title="Swift中的访问控制" >Swift中的访问控制</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年7月25日
-                            </date>
-                            
-                            <div class="post-content">
-                                每一种语言都有自己的访问控制，以实现代码封装。访问控制可以隐藏代码的实现细节，而对外提供一个接口进行访问和使用，从而保护我们的源码。Swift 也提供了自己的访问控制……
-                            </div>
-                            <p class="readmore"><a href="https://superchun.net/post/swift-access-control/">阅读全文</a></p>
-                        </article>
-                    
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://superchun.net/post/vue-vuex/" title="Vue学习系列(六)：Vuex" >Vue学习系列(六)：Vuex</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年7月20日
-                            </date>
-                            
-                            <div class="post-content">
-                                Vue 文档学习第六篇——关于 Vue 中的状态管理模式：Vuex……
-                            </div>
-                            <p class="readmore"><a href="https://superchun.net/post/vue-vuex/">阅读全文</a></p>
-                        </article>
-                    
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://superchun.net/post/vue-slot/" title="Vue学习系列(五)：插槽" >Vue学习系列(五)：插槽</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年7月16日
-                            </date>
-                            
-                            <div class="post-content">
-                                Vue 文档学习第五篇——关于 Vue 中比较重要的一个知识点：插槽……
-                            </div>
-                            <p class="readmore"><a href="https://superchun.net/post/vue-slot/">阅读全文</a></p>
-                        </article>
-                    
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://superchun.net/post/vue-remain-knowleage/" title="Vue学习系列(四)：剩余基础知识" >Vue学习系列(四)：剩余基础知识</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年7月14日
-                            </date>
-                            
-                            <div class="post-content">
-                                Vue 文档学习第四篇——关于 Vue 中剩下的一些基础知识和前面的总结……
-                            </div>
-                            <p class="readmore"><a href="https://superchun.net/post/vue-remain-knowleage/">阅读全文</a></p>
-                        </article>
-                    
-                    
-		    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://superchun.net/post/vue-class-style-bind/" title="Vue学习系列(三)：Class与Style绑定" >Vue学习系列(三)：Class与Style绑定</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2020年7月12日
-                            </date>
-                            
-                            <div class="post-content">
-                                Vue 文档学习第三篇——关于 Class 与 Style 绑定……
-                            </div>
-                            <p class="readmore"><a href="https://superchun.net/post/vue-class-style-bind/">阅读全文</a></p>
-                        </article>
-                    
-                    
-                    
-
-
-
-<ol class="page-navigator">
-    
-
-    
-    <li  class="current">
-        <a href="https://superchun.net/">1</a>
-    </li>
-    
-    <li >
-        <a href="https://superchun.net/page/2/">2</a>
-    </li>
-    
-    <li >
-        <a href="https://superchun.net/page/3/">3</a>
-    </li>
-    
-    <li >
-        <a href="https://superchun.net/page/4/">4</a>
-    </li>
-    
-
-    
-    <li class="next">
-        <a href="https://superchun.net/page/2/">下一页</a>
-    </li>
-    
-</ol>
-
-
-
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
                 </div>
             </div>
-
-            <div id="secondary">
-    <section class="widget">
-        <form id="search" action="/search/" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
-      
-      <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="https://superchun.net">
-      <button type="submit" class="submit icon-search"></button>
-</form>
-    </section>
-    
-    <section class="widget">
-        <h3 class="widget-title">最近文章</h3>
-<ul class="widget-list">
-    
-    <li>
-        <a href="https://superchun.net/post/swift-oc/" title="Swift相对于OC的特性">Swift相对于OC的特性</a>
-    </li>
-    
-    <li>
-        <a href="https://superchun.net/post/oc-mutable-immutble/" title="OC中的mutable与immutable及它们的修饰符">OC中的mutable与immutable及它们的修饰符</a>
-    </li>
-    
-    <li>
-        <a href="https://superchun.net/post/swift-initial/" title="Swift的初始化">Swift的初始化</a>
-    </li>
-    
-    <li>
-        <a href="https://superchun.net/post/swift-access-control/" title="Swift中的访问控制">Swift中的访问控制</a>
-    </li>
-    
-    <li>
-        <a href="https://superchun.net/post/vue-vuex/" title="Vue学习系列(六)：Vuex">Vue学习系列(六)：Vuex</a>
-    </li>
-    
-    <li>
-        <a href="https://superchun.net/post/vue-slot/" title="Vue学习系列(五)：插槽">Vue学习系列(五)：插槽</a>
-    </li>
-    
-    <li>
-        <a href="https://superchun.net/post/vue-remain-knowleage/" title="Vue学习系列(四)：剩余基础知识">Vue学习系列(四)：剩余基础知识</a>
-    </li>
-    
-    <li>
-        <a href="https://superchun.net/post/vue-class-style-bind/" title="Vue学习系列(三)：Class与Style绑定">Vue学习系列(三)：Class与Style绑定</a>
-    </li>
-    
-    <li>
-        <a href="https://superchun.net/post/vue-computedproperty/" title="Vue学习系列(二)：计算属性与侦听器">Vue学习系列(二)：计算属性与侦听器</a>
-    </li>
-    
-    <li>
-        <a href="https://superchun.net/post/vue-templategrammar/" title="Vue学习系列(一)：模板语法">Vue学习系列(一)：模板语法</a>
-    </li>
-    
-</ul>
-    </section>
-
-    
-
-    <section class="widget">
-        <h3 class="widget-title">分类</h3>
-<ul class="widget-list">
-    
-</ul>
-    </section>
-
-    <section class="widget">
-        <h3 class="widget-title">标签</h3>
-<div class="tagcloud">
-    
-    <a href="https://superchun.net/tags/CSS/">CSS</a>
-    
-    <a href="https://superchun.net/tags/Cordova/">Cordova</a>
-    
-    <a href="https://superchun.net/tags/JS/">JS</a>
-    
-    <a href="https://superchun.net/tags/OC/">OC</a>
-    
-    <a href="https://superchun.net/tags/OpenGL-ES/">OpenGL ES</a>
-    
-    <a href="https://superchun.net/tags/Swift/">Swift</a>
-    
-    <a href="https://superchun.net/tags/Vue/">Vue</a>
-    
-    <a href="https://superchun.net/tags/Web/">Web</a>
-    
-    <a href="https://superchun.net/tags/git-ssh/">git ssh</a>
-    
-    <a href="https://superchun.net/tags/iOS/">iOS</a>
-    
-    <a href="https://superchun.net/tags/%E4%BA%8B%E4%BB%B6%E6%8B%A6%E6%88%AA/">事件拦截</a>
-    
-    <a href="https://superchun.net/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-    
-    <a href="https://superchun.net/tags/%E6%9D%82%E8%B0%88%E4%BD%8E%E8%AF%AD/">杂谈低语</a>
-    
-    <a href="https://superchun.net/tags/%E7%AE%97%E6%B3%95/">算法</a>
-    
-</div>
-    </section>
-
-    
-
-    <section class="widget">
-        <h3 class="widget-title">其它</h3>
-        <ul class="widget-list">
-            <li><a href="https://superchun.net/index.xml">文章 RSS</a></li>
-        </ul>
-    </section>
-</div>
         </div>
     </div>
-</div>
-<footer id="footer">
-    <div class="container">
-        &copy; 2021 <a href="https://superchun.net">悉达多｜PainMaker By 悉达多</a>. Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>. 
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
     </div>
-</footer>
 
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
 
-
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-153875253-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
- 
-<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+</div>
+  </header>
+  <main class="flex-grow pt-16">
+  
+  
+  
+    
+      
+  
+
+  
+
+  
+  
+  
+
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+  
+
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+
+    
+    
+    
+    
+    
+  
+
+  <div class="pl-scrollbar bg-secondary-bg" 
+    >
+    <div class="max-w-screen-xl mx-auto">
+      <div id="about" class="lg:w-2/3 mx-auto px-6 md:px-8 xl:px-12 py-12">
+        
+  
+
+  
+    <div class="flex flex-col md:flex-row items-center justify-center mb-12">
+  
+  
+    <div class="flex-none w-48 mx-auto md:ml-0 md:mr-8 md:pr-8 md:border-r">
+      <img src="/favicon.ico" class="rounded-full" alt="Avatar">
+    </div>
+  
+  <div class="flex-grow mt-4 md:mt-0">
+    <div class="text-3xl py-4">悉达多</div>
+    <div class="w-3/12 xl:w-2/12 border-b"></div>
+
+    <div class="flex items-center pt-4">
+      
+        <i class="fas fa-user"></i>
+      
+      <div class="flex flex-wrap">
+        
+          <span class="pl-4">iOS开发工程师</span>
+        
+
+        
+          <a href="" class="pl-4"></a>
+        
+      </div>
+
+    </div>
+
+    
+      <div class="py-8 text-lg leading-normal">
+        知也者，所以知也，而不必知
+      </div>
+    
+  </div>
+  <div class="flex md:flex-col justify-center items-end ml-8">
+    
+    
+      
+      
+      
+      
+      
+      <div class="pb-2 pr-4 md:pr-0 pt-4 md:pt-0">
+        <a href="https://github.com/superchun"><i class="fab fa-github-alt"></i></a>
+      </div>
+    
+      
+      
+      
+      
+      
+      <div class="pb-2 pr-4 md:pr-0 pt-4 md:pt-0">
+        <a href="mailto:xidaduo@superchun.cn"><i class="fas fa-envelope-open-text"></i></a>
+      </div>
+    
+      
+      
+      
+      
+      
+      <div class="pb-2 pr-4 md:pr-0 pt-4 md:pt-0">
+        <a href="#ZgotmplZ"><i class="fas fa-rss"></i></a>
+      </div>
+    
+  </div>
+</div>
+<div class="content">
+  
+</div>
+
+  
+
+      </div>
+    </div>
+  </div>
+
+    
+
+  
+  
+    
+      
+  
+
+  
+
+  
+  
+  
+
+  
+    
+    
+    
+    
+      
+      
+    
+  
+
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+
+    
+    
+    
+    
+    
+  
+
+  <div class="pl-scrollbar bg-primary-bg" 
+    >
+    <div class="max-w-screen-xl mx-auto">
+      <div id="pages" class="lg:w-2/3 mx-auto px-6 md:px-8 xl:px-12 py-12">
+        
+  
+
+  
+
+    
+    
+    
+    
+    
+      
+    
+    <div class="flex flex-col lg:flex-row">
+      <div class="flex-none lg:w-1/4 lg:mr-4">
+        <h2 class="font-bold text-3xl my-4">最近文章</h2>
+      </div>
+      <div class="flex-grow lg:ml-4">
+        
+
+  
+  
+  <div class="overflow-hidden divide-y">
+  
+</div>
+
+
+  <div class="pt-2 hover:text-eureka">
+    
+  <a href="" class="font-semibold">阅读更多</a>
+  <i class="fas fa-caret-right ml-1"></i>
+
+  </div>
 
 
 
 
 
+
+
+
+
+
+
+
+      </div>
+    </div>
+  
+
+      </div>
+    </div>
+  </div>
+
+    
+
+  
+  
+  </main>
+  <footer class="pl-scrollbar">
+    <div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://superchun.net/">C. Chun</a> 
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+  </footer>
 </body>
+
 </html>

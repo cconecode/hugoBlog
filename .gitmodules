@@ -8,3 +8,6 @@
 	path = public
 	url = git@github.com:cconecode/cconecode.github.io.git
 	branch = master
+[submodule "themes/eureka"]
+	path = themes/eureka
+	url = https://github.com/wangchucheng/hugo-eureka.git

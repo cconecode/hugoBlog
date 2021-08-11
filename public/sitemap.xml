@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/search/</loc>
+    <loc>https://superchun.net/search/</loc>
     <lastmod>2019-12-04T16:27:10+08:00</lastmod>
   </url><url>
-    <loc>/archives/</loc>
+    <loc>https://superchun.net/archives/</loc>
     <lastmod>2019-12-04T16:25:22+08:00</lastmod>
   </url><url>
-    <loc>/about/</loc>
+    <loc>https://superchun.net/about/</loc>
     <lastmod>2016-08-26T15:18:58+00:00</lastmod>
   </url><url>
-    <loc>/authors/</loc>
+    <loc>https://superchun.net/authors/</loc>
   </url><url>
-    <loc>/categories/</loc>
+    <loc>https://superchun.net/categories/</loc>
   </url><url>
-    <loc>/series/</loc>
+    <loc>https://superchun.net/series/</loc>
   </url><url>
-    <loc>/tags/</loc>
+    <loc>https://superchun.net/tags/</loc>
   </url><url>
-    <loc>/</loc>
+    <loc>https://superchun.net/</loc>
   </url>
 </urlset>
